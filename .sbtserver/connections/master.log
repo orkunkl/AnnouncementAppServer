@@ -1,0 +1,7 @@
+New log file opened at Sat Feb 18 15:50:08 CET 2017 by 25400@orkun-pc
+Taking next connection to: 42770
+New client attempting to connect on port: 43672-42770
+  Address = /127.0.1.1:42770
+This client on port 43672 has uuid f4586b2c-ca56-4028-a689-f02fa1952bfb configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-f4586b2c-ca56-4028-a689-f02fa1952bfb
+Taking next connection to: 42770
