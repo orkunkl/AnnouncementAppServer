@@ -3,8 +3,6 @@
 
 # --- !Ups
 
-
-
 CREATE TABLE Websites
 (
   websiteID SERIAL PRIMARY KEY,
@@ -16,7 +14,7 @@ CREATE TABLE Groups
 (
   groupID SERIAL PRIMARY KEY,
   groupToken character varying,
-  websiteID integer REFERENCES Websites (groupID) ON UPDATE NO ACTION ON DELETE CASCADE
+  websiteID integer REFERENCES Websites (websiteID) ON UPDATE NO ACTION ON DELETE CASCADE
 );
 
 CREATE TABLE Users
@@ -26,6 +24,7 @@ CREATE TABLE Users
   groupID integer REFERENCES Groups (groupID) ON UPDATE NO ACTION ON DELETE CASCADE
 );
 # --- !Downs
+
 DROP TABLE Users;
 DROP TABLE Groups;
 DROP TABLE Websites;
