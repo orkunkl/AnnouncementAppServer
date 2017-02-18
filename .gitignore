@@ -5,4 +5,5 @@ target
 tmp
 dist
 .cache
+.sbtserver
 .idea
