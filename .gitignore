@@ -7,3 +7,4 @@ dist
 .cache
 .sbtserver
 .idea
+deploy.sh
