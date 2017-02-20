@@ -1,0 +1,10 @@
+New log file opened at Sat Feb 18 20:48:23 CET 2017 by 10707@orkun-pc
+Taking next connection to: 35418
+New client attempting to connect on port: 41458-35418
+  Address = /127.0.1.1:35418
+This client on port 41458 has uuid 68bbf4cb-98db-4a52-a0a5-766d0a759d62 configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: play-fork-run-68bbf4cb-98db-4a52-a0a5-766d0a759d62
+Taking next connection to: 35418
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 35418
