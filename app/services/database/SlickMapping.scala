@@ -17,11 +17,8 @@ trait SlickMapping { self: HasDatabaseConfigProvider[JdbcProfile] =>
 
     def userID = column[Int]("userID", O.PrimaryKey, O.AutoInc)
     def userToken = column[String]("userToken")
-    def groupID = column[Int]("groupID")
 
-    def groupID_FK = foreignKey("groupID_FK", groupID, WebsiteTable)(_.websiteID, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
-
-    override def * = (userID.?, userToken, groupID) <> (User.tupled, User.unapply)
+    override def * = (userID.?, userToken) <> (User.tupled, User.unapply)
   }
 
   val GroupTable = TableQuery[GroupTable]
@@ -37,6 +34,17 @@ trait SlickMapping { self: HasDatabaseConfigProvider[JdbcProfile] =>
     override def * = (groupID.?, groupToken, websiteID) <> (Group.tupled, Group.unapply)
   }
 
+  val UserGroupRelationTable = TableQuery[UserGroupRelationTable]
+
+  class UserGroupRelationTable(tag: Tag) extends Table[UserGroupRelation](tag, "User_Group_Relation") {
+
+    def rowID = column[Int]("ID", O.PrimaryKey, O.AutoInc)
+    def userID = column[Int]("userID")
+    def groupID = column[Int]("groupID")
+
+
+    override def * = (rowID.?, userID, groupID) <> (UserGroupRelation.tupled, UserGroupRelation.unapply)
+  }
   val WebsiteTable = TableQuery[WebsiteTable]
 
   class WebsiteTable(tag: Tag) extends Table[Website](tag, "Websites") {

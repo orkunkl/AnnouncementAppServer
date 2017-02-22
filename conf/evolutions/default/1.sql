@@ -20,7 +20,12 @@ CREATE TABLE Groups
 CREATE TABLE Users
 (
   userID SERIAL PRIMARY KEY,
-  userToken character varying,
+  userToken character varying
+);
+CREATE TABLE UserGroupRelation
+(
+  ID SERIAL PRIMARY KEY,
+  userID integer REFERENCES Users (userID) ON UPDATE NO ACTION ON DELETE CASCADE,
   groupID integer REFERENCES Groups (groupID) ON UPDATE NO ACTION ON DELETE CASCADE
 );
 # --- !Downs
@@ -28,3 +33,4 @@ CREATE TABLE Users
 DROP TABLE Users;
 DROP TABLE Groups;
 DROP TABLE Websites;
+DROP TABLE UserGroupRelation;
