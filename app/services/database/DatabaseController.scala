@@ -21,4 +21,6 @@ class DatabaseController @Inject()(protected val dbConfigProvider: DatabaseConfi
   def insertUser(user: User): Future[Int] = db.run(UserTable += user)
 
   def updateUser(prevUserToken: String, newToken: String): Future[Int] = db.run(UserTable.filter(_.userToken === prevUserToken).map(user => user.userToken).update(newToken))
+
+  def websites = db.run(WebsiteTable.result)
 }
