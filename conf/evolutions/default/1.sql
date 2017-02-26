@@ -7,7 +7,9 @@ CREATE TABLE Websites
 (
   websiteID SERIAL PRIMARY KEY,
   link character varying,
-  parseFormat character varying
+  parseFormat character varying,
+  postFrequency character varying,
+  websiteUpdateSchedule character varying
 );
 
 CREATE TABLE Groups

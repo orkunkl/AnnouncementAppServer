@@ -52,7 +52,9 @@ trait SlickMapping { self: HasDatabaseConfigProvider[JdbcProfile] =>
     def websiteID = column[Int]("websiteID", O.PrimaryKey, O.AutoInc)
     def link = column[String]("link")
     def parseFormat = column[String]("parseFormat")
+    def postFrequency = column[String]("postFrequency")
+    def websiteUpdateSchedule = column[String]("websiteUpdateSchedule")
 
-    override def * = (websiteID.?, link, parseFormat) <> (Website.tupled, Website.unapply)
+    override def * = (websiteID.?, link, parseFormat, postFrequency) <> (Website.tupled, Website.unapply)
   }
 }

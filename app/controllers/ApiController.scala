@@ -1,25 +1,20 @@
 package controllers
 
-import akka.actor.ActorSystem
 import javax.inject._
 
+import akka.actor.ActorSystem
 import models.User
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser.JsoupDocument
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
 import org.jsoup.nodes.Document
-import play.api._
-import play.api.libs.json.{JsError, JsResult, JsSuccess}
+import play.api.libs.json.{JsError, JsSuccess}
 import play.api.libs.ws.WSClient
 import play.api.mvc._
 import services.FCM.FCMController
 import services.database.DatabaseController
-
-import scala.Unit
-import scala.concurrent.{ExecutionContext, Future, Promise}
-import scala.concurrent.duration._
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import net.ruippeixotog.scalascraper.dsl.DSL.Parse._
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
  * This controller creates an `Action` that demonstrates how to write
@@ -37,7 +32,8 @@ class ApiController @Inject()(FCMController: FCMController, databaseController: 
   def message = Action.async {
     WSClient.url("http://bilmuh.ege.edu.tr/").get().map(
       response => {
-        JsoupDocument(Document.createShell(response.body))
+        val doc = JsoupDocument(Document.createShell(response.body))
+
         Ok("")
       }
     )
